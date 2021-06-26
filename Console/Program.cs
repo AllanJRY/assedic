@@ -12,7 +12,7 @@ namespace Console
         static void Main(string[] args)
         {
             /*try
-            {*/
+            {
                 Context context = new Context();
 
                 context.Employees.Add(new Model.Entity.Employee()
@@ -35,7 +35,7 @@ namespace Console
 
                 context.SaveChanges();
 
-            /*} catch(Exception e)
+            } catch(Exception e)
             {
                 System.Console.WriteLine(e.StackTrace);
             }*/
