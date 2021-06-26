@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Entity
 {
-    class Status
+    public class Status
     {
         public int Id { get; set; }
         public string Label { get; set; }

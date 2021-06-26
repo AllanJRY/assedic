@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Entity
 {
-    class Formation
+    public class Formation
     {
         public int Id { get; set; }
 

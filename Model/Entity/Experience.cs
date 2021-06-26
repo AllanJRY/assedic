@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Entity
 {
-    class Experience
+    public class Experience
     {
         public int Id { get; set; }
 
