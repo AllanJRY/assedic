@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Context : DbContext
+    public class Context : DbContext
     {
-        protected Context() : base("cs")
+        public Context() : base("cs")
         {
             Database.SetInitializer<Context>(null);
         }
