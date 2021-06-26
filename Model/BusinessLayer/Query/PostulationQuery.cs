@@ -23,19 +23,19 @@ namespace BusinessLayer.Query
             return _context.Postulations.Include(p => p.Employee).Include(p => p.JobAdvertisement);
         }
 
-        public Postulation GetById(int id)
+        public IQueryable<Postulation> GetAllOfJobAdvertisement(int jobAdvertisementId)
         {
-            return _context.Postulations.Find(id);
-        }
-
-        public IQueryable<Postulation> GetByJobAdvertisementAndEmployee(int jobAdvertisementId, int employeeId)
-        {
-            return _context.Postulations.Where(p => p.JobAdvertisement.Id == jobAdvertisementId && p.Employee.Id == employeeId).Include(p => p.Employee).Include(p => p.JobAdvertisement);
+            return _context.Postulations.Where(p => p.JobAdvertisement.Id == jobAdvertisementId).Include(p => p.Employee).Include(p => p.JobAdvertisement);
         }
 
         public IQueryable<Postulation> GetAllOfEmployee(int employeeId)
         {
             return _context.Postulations.Where(p => p.Employee.Id == employeeId).Include(p => p.Employee).Include(p => p.JobAdvertisement);
+        }
+
+        public IQueryable<Postulation> GetByJobAdvertisementAndEmployee(int jobAdvertisementId, int employeeId)
+        {
+            return _context.Postulations.Where(p => p.JobAdvertisement.Id == jobAdvertisementId && p.Employee.Id == employeeId).Include(p => p.Employee).Include(p => p.JobAdvertisement);
         }
     }
 }
