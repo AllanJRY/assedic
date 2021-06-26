@@ -22,8 +22,8 @@ namespace Model.Configurations
             Property(e => e.DateOfBirth).HasColumnName("EMP_DATEOFBIRTH");
             Property(e => e.Seniority).HasColumnName("EMP_SENIORITY");
 
-            HasMany(e => e.Formations).WithRequired(p => p.Employee).HasForeignKey(p => p.EmployeeId);
-            HasMany(e => e.Experiences).WithRequired(p => p.Employee).HasForeignKey(p => p.EmployeeId);
+            HasMany(e => e.Formations).WithRequired(f => f.Employee).HasForeignKey(f => f.EmployeeId);
+            HasMany(e => e.Experiences).WithRequired(e => e.Employee).HasForeignKey(e => e.EmployeeId);
             HasMany(e => e.Postulations).WithRequired(p => p.Employee).HasForeignKey(p => p.EmployeeId);
         }
     }

@@ -127,7 +127,7 @@ namespace BusinessLayer
 
         public Postulation NewPostulation(int jobAdvertisementId, int employeeId)
         {
-            Postulation postulation = new Postulation
+            Postulation postulation = new Postulation()
             {
                 Date = DateTime.Now,
                 Status = "to-review",

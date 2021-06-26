@@ -3,6 +3,7 @@ using Model.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,9 @@ namespace Model
 {
     public class Context : DbContext
     {
-        public Context() : base("cs")
+        public Context() : base("name=cs")
         {
-            Database.SetInitializer<Context>(null);
+            Database.SetInitializer<Context>(new DropCreateDatabaseIfModelChanges<Context>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
