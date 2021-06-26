@@ -30,7 +30,7 @@ namespace Model
             modelBuilder.Configurations.Add(new StatusFluent());
         }
 
-        public IDbSet<JobAdvertisement> JobAdvertisement { get; set; }
+        public IDbSet<JobAdvertisement> JobAdvertisements { get; set; }
 
         public IDbSet<Employee> Employees { get; set; }
         

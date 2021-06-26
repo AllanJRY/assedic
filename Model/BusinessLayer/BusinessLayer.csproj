@@ -50,6 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessManager.cs" />
+    <Compile Include="Query\EmployeeQuery.cs" />
+    <Compile Include="Query\JobAdvertisementQuery.cs" />
+    <Compile Include="Query\PostulationQuery.cs" />
+    <Compile Include="Query\StatusQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model.csproj">
