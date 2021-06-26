@@ -50,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessManager.cs" />
+    <Compile Include="Command\EmployeeCommand.cs" />
+    <Compile Include="Command\JobAdvertisementCommand.cs" />
+    <Compile Include="Command\PostulationCommand.cs" />
     <Compile Include="Query\EmployeeQuery.cs" />
     <Compile Include="Query\JobAdvertisementQuery.cs" />
     <Compile Include="Query\PostulationQuery.cs" />
