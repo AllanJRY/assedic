@@ -24,5 +24,10 @@ namespace WpfApp.View
         {
             InitializeComponent();
         }
+
+        private void JobAdvertisementDetails_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

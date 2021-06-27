@@ -35,7 +35,7 @@
 
         <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.RowSpan="2" Orientation="Vertical">
             <Label  Background="AliceBlue" FontWeight="Bold">Postulations</Label>
-            <local:PostulationList DataContext="{Binding PostulationListViewModel}" Height="77"></local:PostulationList>
+            <local:PostulationList DataContext="{Binding PostulationListViewModel}"></local:PostulationList>
         </StackPanel>
         
         <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold">Save changes</Label>

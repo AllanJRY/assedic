@@ -1,4 +1,5 @@
-﻿using Model.Entity;
+﻿using BusinessLayer;
+using Model.Entity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -55,7 +56,6 @@ namespace WpfApp.ViewModel
                 OnPropertyChanged("SelectedPostulation");
             }
         }
-
 
         #endregion
     }

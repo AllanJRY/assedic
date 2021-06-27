@@ -33,6 +33,15 @@ namespace Console
                     Status = new Model.Entity.Status() { Label = "open" }
                 });
 
+                context.JobAdvertisements.Add(new Model.Entity.JobAdvertisement()
+                {
+                    Title = "Rust / Rocket.rs - Developper Senior",
+                    Description = "Looking for a rust developper with a really good knowledge of Rocket.rs Framework.",
+                    Salary = 45000,
+                    Date = DateTime.Now,
+                    Status = new Model.Entity.Status() { Label = "closed" }
+                });
+
                 context.SaveChanges();
 
             } catch(Exception e)

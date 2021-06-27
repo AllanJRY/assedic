@@ -38,6 +38,12 @@ namespace BusinessLayer
             return jobAdvertisementQuery.GetAll().ToList();
         }
 
+        public List<JobAdvertisement> GetAllJobAdvertisementsOfStatus(Status status)
+        {
+            JobAdvertisementQuery jobAdvertisementQuery = new JobAdvertisementQuery(context);
+            return jobAdvertisementQuery.GetAllWithStatus(status).ToList();
+        }
+
         public JobAdvertisement GetJobAdvertisementById(int id)
         {
             return (new JobAdvertisementQuery(context)).GetById(id);

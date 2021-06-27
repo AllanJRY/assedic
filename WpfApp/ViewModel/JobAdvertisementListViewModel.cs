@@ -16,6 +16,8 @@ namespace WpfApp.ViewModel
 
         private ObservableCollection<JobAdvertisementDetailsViewModel> _jobAdvertisements = null;
         private JobAdvertisementDetailsViewModel _selectedJobAdvertisements;
+        private ObservableCollection<Status> _appStatus = null;
+        private Status _activeStatusFilter;
 
         #endregion
 
@@ -29,6 +31,9 @@ namespace WpfApp.ViewModel
             {
                 _jobAdvertisements.Add(new JobAdvertisementDetailsViewModel(jobAdvertisement));
             }
+
+            _appStatus = new ObservableCollection<Status>(BusinessManager.Instance().GetAllStatus());
+            _appStatus.Insert(0, new Model.Entity.Status() { Label = "All" });
 
             if (_jobAdvertisements != null && _jobAdvertisements.Count > 0) _selectedJobAdvertisements = _jobAdvertisements.ElementAt(0);
         }
@@ -57,6 +62,38 @@ namespace WpfApp.ViewModel
             }
         }
 
+        public ObservableCollection<Status> Status
+        {
+            get { return _appStatus; }
+        }
+
+        public Status ActiveStatusFilter
+        {
+            get { return _activeStatusFilter; }
+            set
+            {
+                _activeStatusFilter = value;
+                OnPropertyChanged("ActiveStatusFilter");
+                if (_activeStatusFilter != null && _activeStatusFilter.Label != "All")
+                {
+                    _jobAdvertisements = new ObservableCollection<JobAdvertisementDetailsViewModel>();
+                    foreach (JobAdvertisement jobAdvertisement in BusinessManager.Instance().GetAllJobAdvertisementsOfStatus(_activeStatusFilter).OrderByDescending(j => j.Date))
+                    {
+                        _jobAdvertisements.Add(new JobAdvertisementDetailsViewModel(jobAdvertisement));
+                    }
+                }
+                else
+                {
+                    _jobAdvertisements = new ObservableCollection<JobAdvertisementDetailsViewModel>();
+                    foreach (JobAdvertisement jobAdvertisement in BusinessManager.Instance().GetAllJobAdvertisements().OrderByDescending(j => j.Date))
+                    {
+                        _jobAdvertisements.Add(new JobAdvertisementDetailsViewModel(jobAdvertisement));
+                    }
+                }
+
+                OnPropertyChanged("JobAdvertisements");
+            }
+        }
 
         #endregion
     }
