@@ -12,7 +12,7 @@ namespace Model
 {
     public class Context : DbContext
     {
-        public Context() : base("name=cs")
+        public Context() : base("name=cs_test")
         {
             Database.SetInitializer<Context>(new DropCreateDatabaseIfModelChanges<Context>());
         }
