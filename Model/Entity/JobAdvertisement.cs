@@ -14,7 +14,7 @@ namespace Model.Entity
 
         public string Description { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         public float Salary { get; set; }
 

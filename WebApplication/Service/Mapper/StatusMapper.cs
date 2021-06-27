@@ -19,6 +19,8 @@ namespace WebApplication.Service.Mapper
 
         public Status FromViewModelToModel(StatusViewModel viewModel, Status model)
         {
+            if (viewModel == null) return null;
+
             model.Id = viewModel.Id;
             model.Label = viewModel.Label;
 

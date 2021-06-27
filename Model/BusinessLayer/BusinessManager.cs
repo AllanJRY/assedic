@@ -38,6 +38,11 @@ namespace BusinessLayer
             return jobAdvertisementQuery.GetAll().ToList();
         }
 
+        public JobAdvertisement GetJobAdvertisementById(int id)
+        {
+            return (new JobAdvertisementQuery(context)).GetById(id);
+        }
+
         public int AddJobAdvertisement(JobAdvertisement jobAdvertisement)
         {
             jobAdvertisement.Status = GetStatusById(jobAdvertisement.StatusId);
@@ -57,6 +62,12 @@ namespace BusinessLayer
         {
             JobAdvertisementCommand jobAdvertisementCommand = new JobAdvertisementCommand(context);
             jobAdvertisementCommand.Delete(jobAdvertisementId);
+        }
+
+        public List<JobAdvertisement> SearchForJobAdvertisement(string s)
+        {
+            JobAdvertisementQuery jobAdvertisementQuery = new JobAdvertisementQuery(context);
+            return jobAdvertisementQuery.findContainingInTitleAndDesc(s).ToList();
         }
         #endregion
 

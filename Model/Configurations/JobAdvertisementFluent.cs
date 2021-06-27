@@ -19,7 +19,7 @@ namespace Model.Configurations
             Property(j => j.Title).HasColumnName("JOB_ADV_TITLE").IsRequired().HasMaxLength(255);
             Property(j => j.Description).HasColumnName("JOB_ADV_DESCRIPTION");
             Property(j => j.Salary).HasColumnName("JOB_ADV_SALARY");
-            Property(j => j.Date).HasColumnName("JOB_ADV_DATE");
+            Property(j => j.Date).HasColumnName("JOB_ADV_DATE").HasColumnType("datetime2");
             Property(j => j.Manager).HasColumnName("JOB_ADV_MANAGER");
             Property(j => j.StatusId).IsRequired().HasColumnName("STA_ID");
 

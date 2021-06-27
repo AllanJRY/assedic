@@ -21,10 +21,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Job Advertisements", "Index", "JobAdvertisement")</li>
+                    <li>@Html.ActionLink("My Postulations", "Index", "Profile")</li>
                 </ul>
+                @using (Html.BeginForm("Search", "JobAdvertisement", FormMethod.Get, new { @class = "form-inline d-flex" }))
+                {
+                    @Html.TextBox("s", "", new { type = "search", @class = "form-control" })
+                    <input type="submit" value="Search" class="btn btn-default" />
+                }
+
             </div>
         </div>
     </div>

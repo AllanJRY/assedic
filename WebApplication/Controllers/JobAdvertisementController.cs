@@ -29,76 +29,92 @@ namespace WebApplication.Controllers
             return View(jobAdvertisementViewModels);
         }
 
-        // GET: JobAdvertisement/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            JobAdvertisement jobAdvertisement = businessManager.GetJobAdvertisementById(id);
+            JobAdvertisementViewModel jobAdvertisementViewModel = jobAdvertisementMapper.FromModelToViewModel(jobAdvertisement, new JobAdvertisementViewModel());
+
+            return View(jobAdvertisementViewModel);
         }
 
-        // GET: JobAdvertisement/Create
         public ActionResult Create()
         {
-            return View();
+            JobAdvertisementViewModel jobAdvertisementViewModel = new JobAdvertisementViewModel();
+
+            jobAdvertisementViewModel.AppStatusList = new SelectList(businessManager.GetAllStatus(), "Id", "Label");
+
+            return View(jobAdvertisementViewModel);
         }
 
-        // POST: JobAdvertisement/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(JobAdvertisementViewModel jobAdvertisementViewModel)
         {
-            try
+            if(ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                JobAdvertisement newJobAdvertisement = jobAdvertisementMapper.FromViewModelToModel(jobAdvertisementViewModel, new JobAdvertisement());
+                int id = businessManager.AddJobAdvertisement(newJobAdvertisement);
+                return RedirectToAction("Details", new { id = id });
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(jobAdvertisementViewModel);
         }
 
-        // GET: JobAdvertisement/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            JobAdvertisement jobAdvertisement = businessManager.GetJobAdvertisementById(id);
+            JobAdvertisementViewModel jobAdvertisementViewModel = jobAdvertisementMapper.FromModelToViewModel(jobAdvertisement, new JobAdvertisementViewModel());
+
+            jobAdvertisementViewModel.AppStatusList = new SelectList(businessManager.GetAllStatus(), "Id", "Label");
+
+            return View(jobAdvertisementViewModel);
         }
 
-        // POST: JobAdvertisement/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, JobAdvertisementViewModel jobAdvertisementViewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                JobAdvertisement newJobAdvertisementData = jobAdvertisementMapper.FromViewModelToModel(jobAdvertisementViewModel, new JobAdvertisement());
+                businessManager.UpdateJobAdvertisement(newJobAdvertisementData);
+                return RedirectToAction("Details", new { id = id });
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View("Edit", jobAdvertisementViewModel);
         }
 
-        // GET: JobAdvertisement/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            JobAdvertisement jobAdvertisement = businessManager.GetJobAdvertisementById(id);
+            JobAdvertisementViewModel jobAdvertisementViewModel = jobAdvertisementMapper.FromModelToViewModel(jobAdvertisement, new JobAdvertisementViewModel());
+
+            return View(jobAdvertisementViewModel);
         }
 
-        // POST: JobAdvertisement/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, JobAdvertisementViewModel jobAdvertisementViewModel)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            businessManager.DeleteJobAdvertisement(id);
+            return RedirectToAction("Index");
         }
+        public ActionResult Search(string s)
+        {
+            List<JobAdvertisementViewModel> jobAdvertisementViewModels = new List<JobAdvertisementViewModel>();
+            List<JobAdvertisement> jobAdvertisements = businessManager.SearchForJobAdvertisement(s);
+
+            foreach (JobAdvertisement jobAdvertisement in jobAdvertisements)
+            {
+                jobAdvertisementViewModels.Add(jobAdvertisementMapper.FromModelToViewModel(jobAdvertisement, new JobAdvertisementViewModel()));
+            }
+
+            return View("Index", jobAdvertisementViewModels);
+        }
+
+        [HttpPost]
+        public ActionResult Apply(int id)
+        {
+            businessManager.NewPostulation(id, 1);
+            return RedirectToAction("Index", "Profile");
+        }
+
     }
 }

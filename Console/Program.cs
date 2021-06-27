@@ -11,7 +11,7 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            /*try
+            try
             {
                 Context context = new Context();
 
@@ -38,7 +38,7 @@ namespace Console
             } catch(Exception e)
             {
                 System.Console.WriteLine(e.StackTrace);
-            }*/
+            }
         }
     }
 }

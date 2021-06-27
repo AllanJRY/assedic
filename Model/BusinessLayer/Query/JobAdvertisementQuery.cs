@@ -33,7 +33,7 @@ namespace BusinessLayer.Query
             return _context.JobAdvertisements.Where(j => j.Status.Id == status.Id).Include(j => j.Status);
         }
 
-        public IQueryable<JobAdvertisement> findByTitleAndDesc(string query)
+        public IQueryable<JobAdvertisement> findContainingInTitleAndDesc(string query)
         {
             return _context.JobAdvertisements.Where( j =>
                     j.Title.ToLower().Contains(query.ToLower())

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WebApplication.Models
 {
@@ -15,14 +16,18 @@ namespace WebApplication.Models
         
         public float Salary { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         
         public int StatusId { get; set; }
 
         public StatusViewModel Status { get; set; }
         public string Manager { get; set; }
 
-        //public SelectList Statuts { get; set; }
+        #region view_specific_fields
+        public SelectList AppStatusList { get; set; }
+        
+        
+        #endregion
 
     }
 }

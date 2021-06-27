@@ -1,0 +1,70 @@
+﻿@model WebApplication.Models.JobAdvertisementViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JobAdvertisementViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.Label)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manager)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @using (@Html.BeginForm("Apply", "JobAdvertisement", new { id = Model.Id }))
+    {
+        <input type="submit" value="Apply" class="btn btn-success" />
+    }
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
