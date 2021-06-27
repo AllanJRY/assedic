@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp.ViewModel;
 
-namespace WpfApp
+namespace WpfApp.View
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour JobAdvertisementDetails.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class JobAdvertisementDetails : UserControl
     {
-        public MainWindow()
+        public JobAdvertisementDetails()
         {
             InitializeComponent();
-            this.DataContext = new HomeViewModel();
         }
     }
 }

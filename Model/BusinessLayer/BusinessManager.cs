@@ -90,6 +90,12 @@ namespace BusinessLayer
             return employeeQuery.GetAll().ToList();
         }
 
+        public List<Employee> GetAllEmployeesPostulantOfAdvertisement(int id)
+        {
+            EmployeeQuery employeeQuery = new EmployeeQuery(context);
+            return employeeQuery.GetPostulantsOfJobAdvertisement(id).ToList();
+        }
+
         public Employee GetEmployeeById(int id)
         {
             EmployeeQuery employeeQuery = new EmployeeQuery(context);

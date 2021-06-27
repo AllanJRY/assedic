@@ -30,7 +30,7 @@ namespace BusinessLayer.Query
 
         public IQueryable<Employee> GetPostulantsOfJobAdvertisement(int jobAdvertisementId)
         {
-            return _context.Postulations.Where(p => p.JobAdvertisement.Id == jobAdvertisementId).Select(p => p.Employee);
+            return _context.Postulations.Where(p => p.JobAdvertisementId == jobAdvertisementId).Select(p => p.Employee);
         }
     }
 }
